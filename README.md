@@ -1,4 +1,4 @@
-## Hi there  谢谢你来看我(◡ᴗ◡✿)👋
+## Hi there (◡ᴗ◡✿)👋
 
 <!--
 **zora1120/zora1120** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
