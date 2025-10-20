@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00FFFF" />
+  <title>ZORA's Diary</title>
+  <link rel="preload" href="music/bgm.mp3" as="audio" />
+  <link rel="preload" href="music/GRRL'S GRRL.mp3" as="audio" />
+  <link rel="preload" href="music/justforme.mp3" as="audio" />
+  <link rel="preload" href="music/boysalair.mp3" as="audio" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="shine">WELCOME TO MY BLOG ZONE ✦</h1>
+    <div class="marquee">★ HI, IS ZORA HERE · FUSSY ROOM ★</div>
+    <nav>
+      <a href="#about">ABOUT</a>
+      <span>·</span>
+      <a href="#projects">PROJECTS</a>
+      <span>·</span>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>ABOUT ME</h2>
+      <p>IS THIS LOVE OR JUST A FICTION FEELING?</p>
+    </section>
+
+    <section id="projects">
+      <h2>PROJECTS</h2>
+      <ul>
+        <li>
+          ZORA · COLLECTIONS
+          <div class="thumbs" aria-label="thumbnails">
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/10.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/4.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/3.jpg" alt="thumb" /></div>
+          </div>
+        </li>
+        <li>
+          ZORA · PARTS ME
+          <div class="thumbs" aria-label="thumbnails">
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/8.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/11.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/5.jpg" alt="thumb" /></div>
+          </div>
+        </li>
+        <li>
+          ZORA · ALTER EGO
+          <div class="thumbs" aria-label="thumbnails">
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/7.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/1.jpg" alt="thumb" /></div>
+            <div class="thumb" role="img" aria-label="thumbnail"><img src="images/6.jpg" alt="thumb" /></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="music">
+      <h2>NOW PLAYING</h2>
+      <div id="ipod" class="ipod">
+        <div class="ipod-body">
+          <div class="ipod-screen">
+            <input id="progress" class="progress-bar" type="range" min="0" max="100" value="0" aria-label="Progress" />
+            <div class="screen-title">NOW PLAYING</div>
+            <div class="screen-track" id="currentTrack">GRRL'S GRRL.mp3</div>
+            <ul class="playlist" id="playlist" aria-label="Track list">
+              <li data-src="music/GRRL'S GRRL.mp3" class="active">Track 1</li>
+              <li data-src="music/justforme.mp3">Track 2</li>
+              <li data-src="music/boysalair.mp3">Track 3</li>
+            </ul>
+          </div>
+            <div class="ipod-wheel">
+            <button class="wheel-button wb-menu" aria-label="Menu">MENU</button>
+            <button class="wheel-button wb-prev" aria-label="Previous">◄◄</button>
+            <button class="wheel-button wb-next" aria-label="Next">►►</button>
+            <button class="wheel-button wb-play" aria-label="Play/Pause" onclick="if(audio.paused){playMusic()}else{pauseMusic()}">⏯</button>
+            <div class="wheel-center" role="button" tabindex="0" title="Play/Pause"
+                 onclick="if(audio.paused){playMusic()}else{pauseMusic()}"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); if(audio.paused){playMusic()}else{pauseMusic()}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   <section id="blog">
+    <div class="blog-img">
+     <img src="./images/3.jpg" alt="" class="blogimg">
+     </div>
+     <div class="blog-text">
+     <textarea 
+      id="blogInput"
+      rows="10" 
+      cols="20" 
+      placeholder=" ．·°∴ ☆．．·°♡write down(つ﹏⊂) ♡．·°"></textarea>
+      </div>
+       <div class="text-btn" id="saveBtn" role="button" tabindex="0" title="finished">
+        finished
+      </div>
+       <img src="./images/deco3.jpg" alt="decorative" class="corner-img">
+</section>
+
+    <section id="contact">
+      <h2>CONTACT</h2>
+      <p>
+        Email: <a href="mailto:hello@example.com">foundme@instagram:zorahere_</a>
+        · GitHub: <a href="https://zora1120.github.io/" target="_blank" rel="noreferrer">foundme@github</a>
+      </p>
+    </section>
+   
+  </main>
+
+  <footer>
+    <small>© <span id="year"></span> ZORA · Made with Y2K love ✶</small>
+  </footer>
+
+  <!-- 右侧书签样式回到顶部按钮 -->
+  <button id="backToTop" class="bookmark-banner" type="button" aria-label="回到顶部" title="回到顶部">
+    TOP
+  </button>
+
+  <script src="script.js"></script>
+  <script>
+    // 页脚年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+

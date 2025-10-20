@@ -1,0 +1,390 @@
+/* 主题色变量（黑白波点 + 热粉点缀） */
+:root {
+  --hot-pink: #ff2aa1;
+  --ink: #000000;
+  --paper: #ffffff;
+  --muted: rgba(0, 0, 0, 0.04);
+}
+
+body {
+  /* 黑白波点背景 */
+  --dot-gap: 22px;
+  background-image:
+    radial-gradient(circle at center, var(--ink) 1.6px, transparent 1.7px),
+    radial-gradient(circle at center, var(--ink) 1.6px, transparent 1.7px);
+  background-size: var(--dot-gap) var(--dot-gap), var(--dot-gap) var(--dot-gap);
+  background-position: 0 0, calc(var(--dot-gap)/2) calc(var(--dot-gap)/2);
+  background-color: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  font-family: "Arial Black", sans-serif;
+  min-height: 100svh;
+}
+
+/* 掉落爱心容器与动画 */
+.hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.heart {
+  position: absolute;
+  top: -40px;
+  width: 16px;
+  height: 16px;
+  background: var(--heart-color, #000);
+  transform: rotate(45deg) scale(var(--heart-scale, 1));
+  animation: fall 4.6s linear forwards;
+  opacity: 0.8;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--heart-color, #000);
+  border-radius: 50%;
+}
+.heart::before { left: -8px; top: 0; }
+.heart::after { left: 0; top: -8px; }
+@keyframes fall {
+  0% { transform: translateY(-40px) rotate(45deg) scale(var(--heart-scale, 1)); opacity: 0; }
+  8% { opacity: 0.9; }
+  100% { transform: translateY(105vh) rotate(45deg) scale(var(--heart-scale, 1)); opacity: 0.9; }
+}
+
+/* 闪光标题 */
+.shine {
+  font-size: 48px;
+  background: linear-gradient(90deg, #fff, rgb(199, 199, 199), #fff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shine 2s linear infinite, glow 2.2s ease-in-out infinite;
+  text-shadow: 0 0 0 transparent; /* 保持文字描边干净 */
+}
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 0 var(--hot-pink)); }
+  50% { filter: drop-shadow(0 0 14px var(--hot-pink)) drop-shadow(0 0 28px rgba(255, 42, 161, 0.4)); }
+}
+@keyframes shine {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.marquee {
+  font-size: 20px;
+  color: lime;
+  margin: 20px 0;
+}
+
+/* 模拟跑马灯滚动 */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--ink);
+  text-shadow: none;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  background: var(--muted);
+  animation: scroll-x 18s linear infinite;
+}
+@keyframes scroll-x {
+  0% { transform: translateX(10%); }
+  100% { transform: translateX(-110%); }
+}
+
+/* iPod 区域容器（新版CSS造型） */
+#ipod { width: 100%; max-width: 320px; margin: 20px auto; }
+
+/* 旧按钮样式移除，转为iPod转轮按钮 */
+
+/* 页面结构与霓虹外观 */
+header {
+  padding: 28px 16px 10px;
+}
+nav a, nav span {
+  display: inline-block;
+  margin: 0 6px;
+}
+nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s ease, transform 0.12s ease;
+}
+nav a:hover {
+  border-color: var(--hot-pink);
+  transform: translateY(-1px);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 16px 40px;
+}
+
+section {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 18px 16px;
+  margin: 16px 0;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+#blog{
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+
+}
+.blogimg{
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #333;
+  box-shadow: 0 0 10px #ddd;
+}
+#blog textarea {
+  width: 580px;
+  height: 120px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  line-height: 120px;
+  text-align: center;
+  background-image: url('./images/textarea-frame1.png');
+  background-repeat: no-repeat;
+  background-size: 30% 100%;  /* 整个 textarea 填满 */
+  background-position: center;
+  padding: 15px;               
+}
+#blog textarea:focus {
+  border-color: #333;
+  box-shadow: 0 0 10px #bbb;
+  background: #fff;
+
+}
+
+#blog .corner-img {
+  position: absolute;
+  right: 30px;
+  bottom: 18px;
+  width: 100px;
+  height: 120px;
+
+}
+.text-btn{
+  padding: 10px 25px;
+  background: #525252;
+  font-weight: bold;
+  transition: background 0.3s;
+  user-select: none;
+  width: 90px;
+  border-radius: 3%;
+  
+}
+.text-btn:hover{
+  background: #333;
+  color: white;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  padding: 8px 10px;
+  margin: 6px 0;
+  background: var(--paper);
+  border-radius: 10px;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+li::before {
+  content: "•";
+  color: var(--hot-pink);
+  margin-right: 8px;
+}
+
+/* 项目缩略图：横向三等分的正方形 */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 正方形 */
+  border: 2px dashed var(--ink);
+  background: var(--muted);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+a {
+  color: var(--ink);
+}
+a:hover {
+  color: var(--hot-pink);
+}
+
+footer {
+  opacity: 0.9;
+  padding-bottom: 24px;
+}
+
+/* 右侧书签样式回到顶部按钮 */
+.bookmark-banner {
+  position: fixed;
+  right: 12px;
+  bottom: 24px;
+  z-index: 10;
+  width: 52px;
+  height: 120px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 6px 6px 0 #bbb; /* 浅灰色阴影 */
+  font-weight: 900;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 10px;
+}
+.bookmark-banner::before,
+.bookmark-banner::after {
+  content: "♥";
+  font-size: 16px;
+  color: #fff; /* 白色爱心 */
+}
+.bookmark-banner:hover { filter: brightness(1.08); }
+.bookmark-banner:active::before,
+.bookmark-banner:active::after { color: #bbb; } /* 按住时灰色爱心 */
+.bookmark-banner:focus { outline: 3px solid var(--hot-pink); outline-offset: 2px; }
+
+/* 响应式处理 */
+@media (max-width: 520px) {
+  .shine { font-size: 36px; }
+  #ipod { max-width: 260px; }
+}
+
+/* iPod 造型（黑白机身 + 热粉点缀） */
+.ipod { display: flex; justify-content: center; }
+.ipod-body {
+  width: 280px;
+  padding: 18px 18px 26px;
+  border-radius: 26px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.ipod-screen {
+  height: 160px;
+  background: #111;
+  color: #fff;
+  border-radius: 12px;
+  border: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px;
+}
+.screen-photo { width: 100%; height: 92px; border-radius: 8px; overflow: hidden; border: 2px solid var(--paper); margin-top: 2px; }
+.screen-title { margin-top: 6px; font-size: 12px; letter-spacing: 2px; color: var(--hot-pink); }
+.screen-track { margin-top: 4px; font-size: 14px; }
+.progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: #333;
+  outline: none;
+  margin-top: 6px;
+}
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--hot-pink);
+  border: 2px solid #111;
+  cursor: pointer;
+}
+.progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: var(--hot-pink);
+  cursor: pointer;
+}
+.playlist { margin-top: 6px; width: 100%; text-align: left; padding-left: 0; list-style: none; }
+.playlist li { padding: 2px 6px; margin: 2px 0; border-radius: 6px; background: rgba(255,255,255,0.06); color: #ddd; cursor: pointer; }
+.playlist li.active { background: var(--hot-pink); color: #000; }
+.playlist li:hover { filter: brightness(1.2); }
+.ipod-wheel {
+  position: relative;
+  margin: 16px auto 0;
+  width: 200px;
+  height: 200px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 40px rgba(0,0,0,0.04);
+}
+.wheel-button {
+  position: absolute;
+  width: 64px;
+  height: 32px;
+  background: transparent;
+  color: var(--ink);
+  border: none;
+  font-weight: bold;
+}
+.wb-menu { top: 18px; left: 50%; transform: translateX(-50%); }
+.wb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.wb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.wb-play { bottom: 18px; left: 50%; transform: translateX(-50%); color: var(--hot-pink); }
+.wheel-center {
+  position: absolute;
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 92px; height: 92px; border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  overflow: hidden;
+}
+.wheel-center { cursor: pointer; }
+.wheel-center:focus { outline: 3px solid var(--hot-pink); outline-offset: 2px; }
